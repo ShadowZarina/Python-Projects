@@ -1,4 +1,4 @@
-#Even and Odd Number Checker
+# Even and Odd Number Checker
 
 number = int(input("Please enter a number: "))
 
