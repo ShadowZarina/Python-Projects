@@ -2,22 +2,21 @@
 def to_do_list():
     print("\n--- To-Do List Menu ---")
     print("1. Add a new task\n2. Show all tasks\n3. Mark tasks done\n4. Delete tasks\n5. Exit")
-    choice = int(input("Enter a number (1-5): "))
 
 def main():
     tasks = []
     while True:
         to_do_list()
-        choice = int(input("Enter your choice: "))
-        if choice == '1':
+        choice = int(input("Enter a number (1-5): "))
+        if choice == 1:
             add_tasks(tasks)
-        elif choice == '2':
+        elif choice == 2:
             view_tasks(tasks)
-        elif choice == '3':
+        elif choice == 3:
             mark_task_done(tasks)
-        elif choice == '4':
+        elif choice == 4:
             delete_task(tasks)
-        elif choice == '5':
+        elif choice == 5:
             print("Exiting the To-Do List. Goodbye!")
             break
         else:
@@ -36,17 +35,20 @@ def view_tasks(tasks):
     no = 0
     print("\n--- Your Tasks ---")
     for i, item in enumerate(tasks):
-        status = "Done" if item["completed"] else "Pending"
-        print(f"{i + 1}. {item['task']} [{status}]")
+        status = "Done" if item["Completed"] else "Pending"
+        print(f"{i + 1}. {item['Task']} [{status}]")
+    return
     
 def mark_task_done(tasks):
     view_tasks(tasks)
     to_complete = int(input("Enter the number of the task you completed (number): ")) - 1
     if 0 <= to_complete < len(tasks):
-        tasks[to_complete]["completed"] = True
+        tasks[to_complete]["Completed"] = True
     print("Task marked as done.")
+    return
  
 def delete_task(tasks):
+    view_tasks(tasks)
     to_delete = int(input("Enter the number of the task you want to delete (number): ")) - 1
     if 0 <= to_delete < len(tasks):
         tasks.pop(to_delete)
@@ -54,6 +56,6 @@ def delete_task(tasks):
         return
     else:
         print("Invalid task number.")
-
+        return
 
 main()
