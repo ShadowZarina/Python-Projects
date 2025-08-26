@@ -16,14 +16,14 @@ def number_to_roman(num):
     if not (1 <= number <= 3999):
         raise ValueError("Input number must be between 1 and 3999.")
 
-    lookup = [
+    roman = [
         (1000, 'M'), (900, 'CM'), (500, 'D'), (400, 'CD'),
         (100, 'C'), (90, 'XC'), (50, 'L'), (40, 'XL'),
         (10, 'X'), (9, 'IX'), (5, 'V'), (4, 'IV'), (1, 'I')
     ]
 
     result = []
-    for value, symbol in lookup:
+    for value, symbol in roman:
         while number >= value:
             result.append(symbol)
             number -= value
@@ -44,7 +44,7 @@ def roman_to_number(num):
     if not valid_roman_pattern.match(numeral):
         raise ValueError(f"Invalid Roman numeral: {numeral}")
 
-    lookup = {
+    roman = {
         'M': 1000, 'CM': 900, 'D': 500, 'CD': 400,
         'C': 100, 'XC': 90, 'L': 50, 'XL': 40,
         'X': 10, 'IX': 9, 'V': 5, 'IV': 4, 'I': 1
@@ -54,11 +54,11 @@ def roman_to_number(num):
     result = 0
     while i < len(numeral):
         # Check for two-character matches first
-        if i+1 < len(numeral) and numeral[i:i+2] in lookup:
-            result += lookup[numeral[i:i+2]]
+        if i+1 < len(numeral) and numeral[i:i+2] in roman:
+            result += roman[numeral[i:i+2]]
             i += 2
         else:
-            result += lookup[numeral[i]]
+            result += roman[numeral[i]]
             i += 1
     return result
 
