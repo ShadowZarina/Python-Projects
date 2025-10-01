@@ -22,3 +22,12 @@ df.rename(columns={"Name": "Title", "Year": "Publication Year", "User Rating": "
 
 # Convert "Price" column to use the float data type
 df["Price"] = df["Price"].astype(float)
+
+
+# List of authors with the most best selling books
+author_counts = df['Author'].value_counts()
+print(author_counts)
+ 
+# List of genres and their average ratings
+avg_rating_by_genre = df.groupby("Genre")["Rating"].mean()
+print(avg_rating_by_genre)
