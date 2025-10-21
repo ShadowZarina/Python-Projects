@@ -3,6 +3,7 @@ import qrcode
 
 app = Flask(__name__)
 
+'''
 @app.route('/')
 def index():
     user_name = "Alice"
@@ -11,7 +12,29 @@ def index():
 if __name__ == '__main__':
     app.run(debug=True)
 
+from flask import Flask, render_template
 
+app = Flask(__name__)
+
+
+# Define a route (URL path)
+@app.route('/')
+def index():
+    # 1. Define data to send to the HTML template
+    page_title = "My Flask App"
+    user_name = "Guest User"
+    items = ["Apple", "Banana", "Cherry"]
+    
+    # 2. Render the HTML file and pass the data as keyword arguments
+    return render_template('index.html', 
+                           title=page_title, 
+                           name=user_name, 
+                           data_list=items)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+    
+'''
 
 website_link = str(input("Enter a website link: ")
 
