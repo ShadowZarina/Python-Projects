@@ -5,8 +5,49 @@
   padding: 0;
 }
 
-/* BODY */
-/* BODY */
-/* BODY */
-/* BODY */
-/* BODY */
+/* CONTAINER */
+
+.container {
+    /* Full width on mobile */
+    width: 90%; 
+    padding: 10px;
+    margin: 10px auto; /* Center the container */
+    background-color: #f0f0f0;
+}
+
+/* INPUT */
+
+input {
+    /* Input takes up almost the full container width on mobile */
+    width: 100%; 
+    padding: 12px;
+    font-size: 16px;
+    box-sizing: border-box; /* Include padding in the element's total width/height */
+}
+
+/* QR CODE */
+
+/* TEXT */
+
+/* MEDIA QUERY */
+
+/* Styles applied when the screen width is 768px or wider */
+@media (min-width: 768px) {
+    
+    .container {
+        /* Reduce width on laptop to keep content focused */
+        width: 700px; 
+        padding: 20px;
+        /* Optional: Add a shadow to lift the container */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    }
+
+    .my-input {
+        /* Reduce width slightly to better fit the smaller container */
+        width: 60%; 
+        padding: 15px;
+        font-size: 18px;
+        /* Optional: Change border style */
+        border: 2px solid #007bff;
+    }
+}
