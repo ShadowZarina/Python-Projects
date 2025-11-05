@@ -49,3 +49,50 @@ def prepare_smartphone_data(file_path):
 
 # Call the function to prepare data
 cleaned_data = prepare_smartphone_data("./data/smartphones.csv")
+
+
+
+
+def column_to_label(column_name):
+    """
+    Converts a column name in a pandas DataFrame to a string that can be
+    used as a label in a plot.
+    
+    :param column_name: string containing original column name
+    :return: string that is ready to be presented on a plot
+    """
+    
+    # Validate that column_name is a string
+    if isinstance(column_name, str):
+        return " ".join(column_name.split("_")).title()
+        # Update 5: Encapsulated logic into 'column_to_label' function in accordance to DRY principles
+    else:
+        raise Exception("Please makes sure to pass a value of type 'str'.")
+
+
+def visualize_versus_price(clean_data, x):
+    """
+    Use seaborn and matplotlib to identify a pattern between avg_rating and 
+    battery_capacity.
+    
+    :param clean_data: a pandas DataFrame containing cleaned smartphone data
+    :param x: variable to be plotted on the x-axis
+    :return: None
+    """
+    x_title = column_to_label(x)
+    # Update 6: Used 'column_to_label' function to remove duplicated code.
+    
+    # Create the scatterplot
+    sns.scatterplot(x=x, y="price", data=clean_data, hue="os")
+    
+    # Add x and y labels
+    plt.xlabel(x_title)
+    plt.ylabel("Price ($)")
+    
+    # Add a title to the plot
+    plt.title(f"{x_title} vs. Price")
+    
+    
+# Call the function to visualize data
+visualize_versus_price(cleaned_data, "processor_speed")
+
