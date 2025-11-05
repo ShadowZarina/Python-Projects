@@ -54,3 +54,39 @@ campaign.drop(columns=["month", "day", "year"], inplace=True)
 client.to_csv("client.csv", index=False)
 campaign.to_csv("campaign.csv", index=False)
 economics.to_csv("economics.csv", index=False)
+
+
+# Sample Code to Print Tables
+for col in ["credit_default", "mortgage", "previous_outcome", "campaign_outcome"]:
+    print(col)
+    print("--------------")
+    print(df[col].value_counts())
+
+''' 
+Sample Output:
+
+credit_default
+--------------
+no         32588
+unknown     8597
+yes            3
+Name: credit_default, dtype: int64
+mortgage
+--------------
+yes        21576
+no         18622
+unknown      990
+Name: mortgage, dtype: int64
+previous_outcome
+--------------
+nonexistent    35563
+failure         4252
+success         1373
+Name: previous_outcome, dtype: int64
+campaign_outcome
+--------------
+no     36548
+yes     4640
+Name: campaign_outcome, dtype: int64
+
+'''
