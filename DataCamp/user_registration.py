@@ -15,9 +15,8 @@ print(validate_password.__doc__)
 # The top level domains variable is used in validate_email to approve only certain email domains
 print(top_level_domains)
 
-'''
 
-'''
+# USER VALIDATION FUNCTION
 
 def validate_user(name, email, password):
 
@@ -31,6 +30,9 @@ def validate_user(name, email, password):
         raise ValueError("Your password is too weak, ensure that your password is greater than 8 characters, and contains a capital letter and a number.")
 
     return True
+
+
+# USER REGISTRATION FUNCTION
 
 def register_user(name, email, password):
     try: 
