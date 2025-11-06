@@ -1,3 +1,4 @@
+## 1. Import JSON file into a dictionary
 import json  # Import the json module to work with JSON files
 
 # Open the nutrition.json file in read mode and load its content into a dictionary
@@ -29,3 +30,23 @@ Sample Output of Nutrition Dict
    'carbohydrate': 5.88,
    'sugars': 3.53})]
 '''
+
+## 2. Create a function that checks if all nutrition values are present
+
+def nutritional_summary(foods):
+    result_dict = {"calories": 0, "total_fat": 0, "protein": 0, "carbohydrate": 0, "sugars": 0} 
+
+    for name, grams in foods.items():
+        if name in nutrition_dict:
+            nutrition = nutrition_dict[name]
+            # Calculate and add the nutritional values based on the given weight (grams)
+            result_dict["calories"] += grams * nutrition["calories"] / 100
+            result_dict["total_fat"] += grams * nutrition["total_fat"] / 100
+            result_dict["protein"] += grams * nutrition["protein"] / 100
+            result_dict["carbohydrate"] += grams * nutrition["carbohydrate"] / 100
+            result_dict["sugars"] += grams * nutrition["sugars"] / 100
+        else:
+            # Return the name of the first food item not found in the nutrition_dict
+            return name
+    # Return the total nutritional values
+    return result_dict
